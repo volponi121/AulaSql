@@ -140,7 +140,71 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ENDERECO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
+drop table UF;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
+
+-- Exercicio01
+DESC UF;
+INSERT INTO UF(NOME_UF) 
+	values('AM'),
+		  ('AP'),
+		  ('BA'),
+          ('CE'),
+		  ('DF'),
+		  ('ES'),
+		  ('GO'),
+		  ('MA'),
+		  ('MG'),
+		  ('MS'),
+		  ('MT'),
+		  ('PA'),
+		  ('PB'),
+		  ('PE'),
+		  ('PI'),
+          ('PR'),
+          ('RJ'),
+          ('RO'),
+          ('RR'),
+          ('RS'),
+          ('SC'),
+          ('SE'),
+		  ('SP'),
+		  ('TO'),
+          ('RN'),
+          ('AC'),
+          ('AL');
+SELECT * FROM UF;
+-- Exercicio02 
+DESC CIDADE;         
+ALTER TABLE CIDADE ADD NOME varchar(45);
+
+INSERT INTO CIDADE(UF_ID_UF,NOME)
+	VALUES  (18,'Lunardeli'),
+			(18,'Maringá'),
+			(18,'Curitiba'),
+            (18,'Apucarana'),
+            (18,'Arapongas'),
+            (18,'Ponta Grossa'),
+            (18,'Jandaia do Sul'),
+            (18,'Sertanopolis'),
+			(18,'Cianorte'),
+			(18,'Sarandi'),
+            (18,'Londrina'),
+            (18,'Cruzeiro do Oeste');
+
+INSERT INTO CIDADE (UF_ID_UF,NOME)
+	VALUES (25,'Ribeirão Preto'),
+		   (25,'Cotia');
+
+INSERT INTO CIDADE (UF_ID_UF,NOME)
+	VALUES (26,'Tocantinopolis');
+    
+SELECT * FROM CIDADE;
+
+DELETE UF FROM UF A LEFT OUTER JOIN CIDADE B ON A.UF_ID_UF = B.UF_ID_UF;
